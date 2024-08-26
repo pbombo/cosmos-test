@@ -49,7 +49,7 @@ with DAG(
             dbt_project_path="/opt/airflow/dags/repo/dbt/northwind"
         ),
         profile_config=ProfileConfig(
-            profile_name="trino_profile",
+            profile_name="northwind",
             target_name="dev",
             profiles_yml_filepath="dbt_profiles.yml",
         ),
