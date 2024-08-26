@@ -48,7 +48,7 @@ with DAG(
         profile_config=ProfileConfig(
             profile_name="trino_profile",
             target_name="dev",
-            profiles_yml_filepath="../../dbt_profiles.yml"
+            profiles_yml_filepath="dbt_profiles.yml"
         ),
         project_config=ProjectConfig(PROJECT_DIR),
         execution_config=ExecutionConfig(
