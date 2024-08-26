@@ -45,11 +45,13 @@ with DAG(
     catchup=False,
 ) as dag:
     run_models = DbtTaskGroup(
+        project_config=ProjectConfig(
+            dbt_project_path="/opt/airflow/dags/repo/dbt/northwind"
+        ),
         profile_config=ProfileConfig(
             profile_name="trino_profile",
             target_name="dev",
             profiles_yml_filepath="dbt_profiles.yml",
-            dbt_project_path="/opt/airflow/dags/repo/dbt/northwind"
         ),
         execution_config=ExecutionConfig(
             execution_mode=ExecutionMode.KUBERNETES,
