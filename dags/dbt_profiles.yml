@@ -7,8 +7,8 @@ northwind:
       method: none  # optional, one of {none | ldap | kerberos}
       password:  # required if method is ldap or kerberos
       database: icerest
-      host: localhost
-      port: 8800
+      host: trino-cluster-trino.trino
+      port: 8080
       schema: staging
       threads: 1
     prod:
@@ -17,7 +17,7 @@ northwind:
       user: admin
       password:  # required if method is ldap or kerberos
       database: icerest
-      host: localhost
-      port: 8800
+      host: trino-cluster-trino.trino
+      port: 8080
       schema: ingestion
       threads: 2
