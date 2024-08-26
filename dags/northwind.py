@@ -12,7 +12,6 @@ from cosmos import (
     ExecutionMode,
     DbtTaskGroup,
 )
-from cosmos.profiles import DbtProfileMapping
 
 
 PROJECT_DIR = Path("dbt/northwind")
