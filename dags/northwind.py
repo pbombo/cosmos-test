@@ -51,7 +51,7 @@ with DAG(
         profile_config=ProfileConfig(
             profile_name="northwind",
             target_name="dev",
-            profiles_yml_filepath="dbt_profiles.yml",
+            profiles_yml_filepath="/opt/airflow/dags/repo/dbt/northwind/dbt_profiles.yml",
         ),
         execution_config=ExecutionConfig(
             execution_mode=ExecutionMode.KUBERNETES,
