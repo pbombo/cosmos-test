@@ -48,9 +48,9 @@ with DAG(
         profile_config=ProfileConfig(
             profile_name="trino_profile",
             target_name="dev",
-            profiles_yml_filepath="dbt_profiles.yml"
+            profiles_yml_filepath="dbt_profiles.yml",
+            dbt_project_path="/opt/airflow/dags/repo/dbt/northwind"
         ),
-        project_config=ProjectConfig(PROJECT_DIR),
         execution_config=ExecutionConfig(
             execution_mode=ExecutionMode.KUBERNETES,
         ),
