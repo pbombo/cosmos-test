@@ -1,0 +1,23 @@
+northwind:
+  target: dev
+  outputs:
+    dev:
+      type: trino
+      user: admin
+      method: none  # optional, one of {none | ldap | kerberos}
+      password:  # required if method is ldap or kerberos
+      database: icerest
+      host: localhost
+      port: 8800
+      schema: staging
+      threads: 1
+    prod:
+      type: trino
+      method: none  # optional, one of {none | ldap | kerberos}
+      user: admin
+      password:  # required if method is ldap or kerberos
+      database: icerest
+      host: localhost
+      port: 8800
+      schema: ingestion
+      threads: 2

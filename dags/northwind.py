@@ -49,12 +49,7 @@ with DAG(
         profile_config=ProfileConfig(
             profile_name="trino_profile",
             target_name="dev",
-            profile_mapping=DbtProfileMapping(
-                conn_id="trino_default",
-                profile_args={
-                    "schema": "public",
-                },
-            ),
+            profiles_yml_filepath="dbt_profiles.yml"
         ),
         project_config=ProjectConfig(PROJECT_DIR),
         execution_config=ExecutionConfig(
