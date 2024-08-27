@@ -56,7 +56,6 @@ with DAG(
         ),
         operator_args={
             "image": DBT_IMAGE,
-            "install_deps": True,
             "get_logs": True,
             "is_delete_operator_pod": False,
             "secrets": [trino_user_secret, trino_password_secret, trino_host_secret],
