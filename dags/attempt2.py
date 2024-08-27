@@ -27,9 +27,10 @@ def user_defined_profile() -> None:
     pre_dbt = EmptyOperator(task_id="pre_dbt")
 
     jaffle_shop = DbtTaskGroup(
-        project_config=ProjectConfig(
-            DBT_ROOT_PATH / "nortwhind",
-        ),
+        # project_config=ProjectConfig(
+        #     DBT_ROOT_PATH / "nortwhind",
+        # ),
+        project_config=ProjectConfig("/opt/airflow/dags/repo/dbt/northwind"),
         profile_config=ProfileConfig(
             profile_name="default",
             target_name="dev",
