@@ -32,7 +32,7 @@ def user_defined_profile() -> None:
         # ),
         project_config=ProjectConfig("/opt/airflow/dags/repo/dbt/northwind"),
         profile_config=ProfileConfig(
-            profile_name="default",
+            profile_name="nortwhind",
             target_name="dev",
             profiles_yml_filepath=PROFILES_FILE_PATH,
         ),
