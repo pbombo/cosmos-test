@@ -45,9 +45,7 @@ with DAG(
     catchup=False,
 ) as dag:
     run_models = DbtTaskGroup(
-        project_config=ProjectConfig(
-            dbt_project_path="/opt/airflow/dags/repo/dbt/northwind"
-        ),
+        project_config=ProjectConfig("/opt/airflow/dags/repo/dbt/northwind"),
         profile_config=ProfileConfig(
             profile_name="northwind",
             target_name="dev",
@@ -58,6 +56,7 @@ with DAG(
         ),
         operator_args={
             "image": DBT_IMAGE,
+            "install_deps": True,
             "get_logs": True,
             "is_delete_operator_pod": False,
             "secrets": [trino_user_secret, trino_password_secret, trino_host_secret],
