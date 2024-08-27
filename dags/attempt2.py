@@ -10,7 +10,7 @@ from airflow.operators.empty import EmptyOperator
 
 from cosmos import DbtTaskGroup, ProjectConfig, ProfileConfig
 
-DEFAULT_DBT_ROOT_PATH = Path(__file__).parent / "dbt"
+DEFAULT_DBT_ROOT_PATH = Path(__file__).parent / "../dbt"
 DBT_ROOT_PATH = Path(os.getenv("DBT_ROOT_PATH", DEFAULT_DBT_ROOT_PATH))
 PROFILES_FILE_PATH = '/opt/airflow/dags/repo/dbt/northwind' #Path(DBT_ROOT_PATH, "northwind", "dbt_profiles.yml")
 
