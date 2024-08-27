@@ -2,7 +2,7 @@ with customers as (
     SELECT
         customer_id,
         contact_name as "name"
-    FROM icerest.ingestion.ingestion_northwind_public_customers
+    FROM icerest.ingestion.cdc_northwind_public_customers
 ),
 
 orders as (
@@ -11,7 +11,7 @@ orders as (
         customer_id,
         date_add('day', order_date, date '1970-01-01') AS order_date
         
-    FROM icerest.ingestion.ingestion_northwind_public_orders
+    FROM icerest.ingestion.cdc_northwind_public_orders
 ),
 
 customer_orders AS (
