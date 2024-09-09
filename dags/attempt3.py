@@ -76,9 +76,9 @@ def create_dbt_dag(dag_id, schedule, select_tag, start_date=datetime(2024, 9, 1)
 
 
 # DAG for models that run every 10 minutes
-create_dbt_dag("lakehouse_etl_10min",
+globals()['dag_10min'] = create_dbt_dag("lakehouse_etl_10min",
                           duration(minutes=10), ['tag:first_tag'])
 
 # DAG for models that run every 5 minutes
-create_dbt_dag("lakehouse_etl_5min",
+globals()['dag_5min'] = create_dbt_dag("lakehouse_etl_5min",
                            duration(minutes=5), ['tag:some_tag'])
