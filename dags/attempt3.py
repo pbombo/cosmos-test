@@ -5,7 +5,7 @@ from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.providers.cncf.kubernetes.secret import Secret
 
-from pendulum import datetime, Duration
+from pendulum import datetime
 
 from cosmos import (
     ProjectConfig,
@@ -48,10 +48,6 @@ trino_host_secret = Secret(
 #     catchup=False,
 # ) as dag:
 def create_dbt_dag(dag_id, schedule, select_tag, start_date=datetime(2024, 9, 1)):
-    # Convert schedule to string if it's a Duration object
-    if isinstance(schedule, Duration):
-        schedule = f"@{schedule.in_words()}"
-        
     with DAG(
         dag_id=dag_id,
         schedule_interval=schedule,
@@ -78,11 +74,10 @@ def create_dbt_dag(dag_id, schedule, select_tag, start_date=datetime(2024, 9, 1)
 
         return dag
 
-
-# DAG for models that run every 10 minutes
+# DAG for models that run every 10 minutes (cron expression for every 10 minutes)
 globals()['dag_10min'] = create_dbt_dag("lakehouse_etl_10min",
-                          '@every 10 minutes', ['tag:first_tag'])
+                          '*/10 * * * *', ['tag:first_tag'])
 
-# DAG for models that run every 5 minutes
+# DAG for models that run every 5 minutes (cron expression for every 5 minutes)
 globals()['dag_5min'] = create_dbt_dag("lakehouse_etl_5min",
-                           '@every 5 minutes', ['tag:some_tag'])
+                           '*/5 * * * *', ['tag:some_tag'])
