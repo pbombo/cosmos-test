@@ -48,6 +48,10 @@ trino_host_secret = Secret(
 #     catchup=False,
 # ) as dag:
 def create_dbt_dag(dag_id, schedule, select_tag, start_date=datetime(2024, 9, 1)):
+    # Convert schedule to string if it's a Duration object
+    if isinstance(schedule, duration):
+        schedule = f"@{schedule.in_words()}"
+        
     with DAG(
         dag_id=dag_id,
         schedule_interval=schedule,
@@ -77,8 +81,8 @@ def create_dbt_dag(dag_id, schedule, select_tag, start_date=datetime(2024, 9, 1)
 
 # DAG for models that run every 10 minutes
 globals()['dag_10min'] = create_dbt_dag("lakehouse_etl_10min",
-                          duration(minutes=10), ['tag:first_tag'])
+                          '@every 10 minutes', ['tag:first_tag'])
 
 # DAG for models that run every 5 minutes
 globals()['dag_5min'] = create_dbt_dag("lakehouse_etl_5min",
-                           duration(minutes=5), ['tag:some_tag'])
+                           '@every 5 minutes', ['tag:some_tag'])
