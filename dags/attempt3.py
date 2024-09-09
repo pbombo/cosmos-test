@@ -5,7 +5,7 @@ from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.providers.cncf.kubernetes.secret import Secret
 
-from pendulum import datetime, duration
+from pendulum import datetime, Duration
 
 from cosmos import (
     ProjectConfig,
@@ -49,7 +49,7 @@ trino_host_secret = Secret(
 # ) as dag:
 def create_dbt_dag(dag_id, schedule, select_tag, start_date=datetime(2024, 9, 1)):
     # Convert schedule to string if it's a Duration object
-    if isinstance(schedule, duration):
+    if isinstance(schedule, Duration):
         schedule = f"@{schedule.in_words()}"
         
     with DAG(
