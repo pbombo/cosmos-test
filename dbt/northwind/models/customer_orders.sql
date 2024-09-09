@@ -1,3 +1,8 @@
+{{
+    config(
+        tags=['first_tag']
+    )
+}}
 with customers as (
     SELECT
         customer_id,
